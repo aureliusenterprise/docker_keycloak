@@ -50,10 +50,6 @@
                     <input class="button is-primary is-fullwidth is-large" tabindex="4" name="login" id="kc-login" type="submit" value="${msg("doLogIn")}"/>
                 </p>
             </form>
-            <hr class="hr">
-            <div class="field">
-                <a href="${url.registrationUrl}">Register a new account</a>
-            </div>            
             <#if realm.resetPasswordAllowed>
                 <div class="field">
                     <a class="level-item" href="${url.loginResetCredentialsUrl}">I forgot my password</a>
