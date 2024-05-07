@@ -69,7 +69,7 @@
                     <#list social.providers as p>
                         <div style="margin-top: 0.75rem">
                             <li>
-                                <a id="social-${p.alias}" class="button is-outlined is-fullwidth is-normal identity-provider" type="button" href="${p.loginUrl}">
+                                <a id="social-${p.alias}" class="button is-outlined is-fullwidth is-normal identity-provider social-${p.alias}" type="button" href="${p.loginUrl}">
                                     <#if p.alias?has_content >
                                         <span class="icon is-small">
                                             <img src="${url.resourcesPath}/logos/${p.alias!}-logo.svg" alt="">
