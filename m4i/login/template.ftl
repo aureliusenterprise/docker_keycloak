@@ -44,34 +44,34 @@
                 <div class="box">
                     <h1 id="kc-page-title" class="title is-1"><#nested "header"></h1>
                     <hr class="hr">
-                    <#if displayMessage && message?has_content>        
+                    <#if displayMessage && message?has_content>
                         <#if message.type = 'success'>
                             <article class="message is-success">
                                 <div class="message-body">
                                     <span>${kcSanitize(message.summary)?no_esc}</span>
                                 </div>
-                            </article>                            
+                            </article>
                         </#if>
                         <#if message.type = 'warning'>
                             <article class="message is-warning">
                                 <div class="message-body">
                                     <span>${kcSanitize(message.summary)?no_esc}</span>
                                 </div>
-                            </article>                            
+                            </article>
                         </#if>
                         <#if message.type = 'error'>
                             <article class="message is-danger">
                                 <div class="message-body">
                                     <span>${kcSanitize(message.summary)?no_esc}</span>
                                 </div>
-                            </article>                            
+                            </article>
                         </#if>
                         <#if message.type = 'info'>
                             <article class="message is-info">
                                 <div class="message-body">
                                     <span>${kcSanitize(message.summary)?no_esc}</span>
                                 </div>
-                            </article>                            
+                            </article>
                         </#if>
                     </#if>
 
@@ -84,6 +84,8 @@
                             </div>
                         </div>
                     </#if>
+
+                    <#nested "socialProviders">
 
                 </div>
             </div>
