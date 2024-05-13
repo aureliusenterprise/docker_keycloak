@@ -1,7 +1,8 @@
 #!/bin/bash
 
+PORT=${KEYCLOAK_PORT:-8080}
 while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' curl \
-                 -X GET "http://localhost:8080/" | tail -c 3)" != "200" ]]; do 
+                 -X GET "http://localhost:${PORT}/" | tail -c 3)" != "200" ]]; do
     echo '.'
     sleep 5;
 done;
