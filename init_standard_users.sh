@@ -1,9 +1,10 @@
 #!/bin/bash
 
+HOST=${HOST:-localhost}
 PORT=${KEYCLOAK_PORT:-8080}
 while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' curl \
-                 -X GET "http://localhost:${PORT}/" | tail -c 3)" != "200" ]]; do
-    echo '.'
+                 -X GET "http://${HOST}:${PORT}/" | tail -c 3)" != "200" ]]; do
+    echo 'Waiting for service.'
     sleep 5;
 done;
 sleep 5;

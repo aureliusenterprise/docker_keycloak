@@ -4,13 +4,14 @@ Docker image with `keycloak:16.1.0` modified for Aurelius Atlas needs. For the d
 ## Environment variables
 To configure the container you should specify the following environment variables:
 
-| variable | description | required |
-| - | - | - |
-| KEYCLOAK_USER | Keycloak admin username | yes |
-| KEYCLOAK_PASSWORD | Keycloak admin password | yes |
-| KEYCLOAK_REALM_NAME | your atlas realm name; used by create_user.sh | no (default: `m4i`) |
-| KEYCLOAK_PORT | Keycloak server port; used by create_user.sh | no (default: `8080`) |
-| KEYCLOAK_IMPORT | path to realm file to be imported on startup | no |
+| variable            | description                                    | required                  |
+|---------------------|------------------------------------------------|---------------------------|
+| KEYCLOAK_USER       | Keycloak admin username                        | yes                       |
+| KEYCLOAK_PASSWORD   | Keycloak admin password                        | yes                       |
+| KEYCLOAK_REALM_NAME | your atlas realm name; used by create_user.sh  | no (default: `m4i`)       |
+| KEYCLOAK_HOST         | Keycloak server host; used by create_user.sh | no (default: `localhost`) |
+| KEYCLOAK_PORT       | Keycloak server port; used by create_user.sh   | no (default: `8080`)      |
+| KEYCLOAK_IMPORT     | path to realm file to be imported on startup   | no                        |
 
 ## Build
 
