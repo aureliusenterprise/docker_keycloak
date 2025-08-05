@@ -53,7 +53,12 @@
             <#if realm.resetPasswordAllowed>
                 <div class="field">
                     <a class="level-item" href="${url.loginResetCredentialsUrl}">I forgot my password</a>
+                </div>
+            </#if>
+            <#if realm.registrationAllowed && !registrationEmailAsUsername??&& !registrationDisabled??>
                 <div class="field">
+                    <span>${msg("noAccount")} <a href="${url.registrationUrl}">${msg("doRegister")}</a></span>
+                </div>
             </#if>
         </#if>
       </div>

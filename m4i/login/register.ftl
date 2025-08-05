@@ -65,6 +65,49 @@
             </div>
             </#if>
 
+            <div class="field">
+                <label class="label" for="user.attributes.phoneNumber">Phone Number</label>
+                <div class="control has-icons-left is-expanded">
+                    <textarea class="textarea" id="user.attributes.phoneNumber" name="user.attributes.phoneNumber" rows="2">${(register.formData['user.attributes.phoneNumber']!'')}</textarea>
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-phone"></i>
+                    </span>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label" for="user.attributes.countryRegion">Country/Region</label>
+                <div class="control has-icons-left is-expanded">
+                    <textarea class="textarea" id="user.attributes.countryRegion" name="user.attributes.countryRegion" rows="2">${(register.formData['user.attributes.countryRegion']!'')}</textarea>
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-globe"></i>
+                    </span>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label" for="user.attributes.areaOfInterest">Area of Interest</label>
+                <div class="control has-icons-left is-expanded">
+                    <textarea class="textarea" id="user.attributes.areaOfInterest" name="user.attributes.areaOfInterest" rows="3">${(register.formData['user.attributes.areaOfInterest']!'')}</textarea>
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-lightbulb"></i>
+                    </span>
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <#if register.formData['user.attributes.termsAgreement']?? && register.formData['user.attributes.termsAgreement'] == 'true'>
+                        <input class="is-checkradio" id="user.attributes.termsAgreement" name="user.attributes.termsAgreement" type="checkbox" value="true" checked required>
+                    <#else>
+                        <input class="is-checkradio" id="user.attributes.termsAgreement" name="user.attributes.termsAgreement" type="checkbox" value="true" required>
+                    </#if>
+                    <label for="user.attributes.termsAgreement">
+                        I agree to the <a id="myTerms"><i>Terms of Service</i></a> and the <a id="myPrivacy"><i>Privacy Policy</i></a> *
+                    </label>
+                </div>
+            </div>
+
             <#if recaptchaRequired??>
                 <div class="field">
                     <div class="g-recaptcha" data-size="compact" data-sitekey="${recaptchaSiteKey}"></div>
@@ -82,8 +125,6 @@
             </div>
 
             <hr class="hr">
-
-			<p>By clicking on "${msg("doRegister")}", you are agreeing to the <a id="myTerms"><i>Terms of Service</i></a> and the <a id="myPrivacy"><i>Privacy Policy</i></a>.</p>
         </form>
 
 <!--  ===================== Terms of Service =================================================== -->
@@ -954,6 +995,20 @@ style='font-size:10.0pt;font-family:"&amp;quot",serif;color:#3D464D'>. </span></
     privacyBackground.onclick = togglePrivacyModal();
     privacyClose.onclick = togglePrivacyModal();
     privacyGotIt.onclick = togglePrivacyModal();
+
+    // Form validation for terms agreement
+    const registrationForm = document.getElementById('kc-register-form');
+    const termsCheckbox = document.getElementById('user.attributes.termsAgreement');
+    
+    if (registrationForm && termsCheckbox) {
+        registrationForm.addEventListener('submit', function(e) {
+            if (!termsCheckbox.checked) {
+                e.preventDefault();
+                alert('You must agree to the Terms of Service and Privacy Policy to register.');
+                return false;
+            }
+        });
+    }
 </script>
 
 
