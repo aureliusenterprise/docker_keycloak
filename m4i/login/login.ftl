@@ -56,8 +56,8 @@
                 </div>
             </#if>
             <#if realm.registrationAllowed && !registrationEmailAsUsername??&& !registrationDisabled??>
-                <div class="field">
-                    <span>${msg("noAccount")} <a href="${url.registrationUrl}">${msg("doRegister")}</a></span>
+                <div class="field" style="margin-top: 2.5rem;">
+                    <span>${msg("Don't have an account?")} <a href="${url.registrationUrl}">${msg("Sign up")}</a></span>
                 </div>
             </#if>
         </#if>
