@@ -1,9 +1,9 @@
 <#import "template.ftl" as layout>
 <@layout.registrationLayout; section>
     <#if section = "title">
-        ${msg("Register",(realm.displayName!''))}
+        ${msg("Create Your Account",(realm.displayName!''))}
     <#elseif section = "header">
-        ${msg("Register",(realm.displayNameHtml!''))?no_esc}
+        ${msg("Create Your Account",(realm.displayNameHtml!''))?no_esc}
     <#elseif section = "form">
         <form id="kc-register-form" action="${url.registrationAction}" method="post">
             <div class="field">
@@ -55,7 +55,7 @@
             </div>
 
             <div class="field">
-                <label class="label" for="password-confirm">${msg("passwordConfirm")} *</label>
+                <label class="label" for="password-confirm">Confirm Password *</label>
                 <div class="control has-icons-left is-expanded">
                     <input type="password" id="password-confirm" class="input" name="password-confirm" />
                     <span class="icon is-small is-left">
