@@ -7,14 +7,14 @@
     <#elseif section = "form">
         <form id="kc-register-form" action="${url.registrationAction}" method="post">
             <div class="field">
-                <label class="label" for="firstName">${msg("firstName")} *</label>
+                <label class="label" for="firstName">First Name *</label>
                 <div class="control is-expanded">
                     <input type="text" id="firstName" class="input" name="firstName" value="${(register.formData.firstName!'')}" />
                 </div>
             </div>
 
             <div class="field">
-                <label class="label" for="lastName">${msg("lastName")} *</label>
+                <label class="label" for="lastName">Last Name *</label>
                 <div class="control is-expanded">
                     <input type="text" id="lastName" class="input" name="lastName" value="${(register.formData.lastName!'')}" />
                 </div>
@@ -83,9 +83,9 @@
             </div>
 
             <div class="field">
-                <label class="label" for="user.attributes.countryRegion">Country/Region</label>
+                <label class="label" for="user.attributes.countryRegion">Country</label>
                 <div class="control has-icons-left is-expanded">
-                    <textarea class="textarea" id="user.attributes.countryRegion" name="user.attributes.countryRegion" rows="2">${(register.formData['user.attributes.countryRegion']!'')}</textarea>
+                    <input type="text" id="user.attributes.countryRegion" class="input" name="user.attributes.countryRegion" value="${(register.formData['user.attributes.countryRegion']!'')}" />
                     <span class="icon is-small is-left">
                         <i class="fas fa-globe"></i>
                     </span>
@@ -95,7 +95,7 @@
             <div class="field">
                 <label class="label" for="user.attributes.areaOfInterest">Area of Interest</label>
                 <div class="control has-icons-left is-expanded">
-                    <textarea class="textarea" id="user.attributes.areaOfInterest" name="user.attributes.areaOfInterest" rows="3">${(register.formData['user.attributes.areaOfInterest']!'')}</textarea>
+                    <input type="text" id="user.attributes.areaOfInterest" class="input" name="user.attributes.areaOfInterest" value="${(register.formData['user.attributes.areaOfInterest']!'')}" />
                     <span class="icon is-small is-left">
                         <i class="fas fa-lightbulb"></i>
                     </span>
@@ -120,7 +120,7 @@
                         <i class="fas fa-user-tie"></i>
                     </span>
                 </div>
-            </div>
+            </div>  
 
             <div class="field">
                 <div class="control">
