@@ -1,27 +1,27 @@
 <#import "template.ftl" as layout>
 <@layout.registrationLayout; section>
     <#if section = "title">
-        ${msg("Register",(realm.displayName!''))}
+        ${msg("Create Your Account",(realm.displayName!''))}
     <#elseif section = "header">
-        ${msg("Register",(realm.displayNameHtml!''))?no_esc}
+        ${msg("Create Your Account",(realm.displayNameHtml!''))?no_esc}
     <#elseif section = "form">
         <form id="kc-register-form" action="${url.registrationAction}" method="post">
             <div class="field">
-                <label class="label" for="firstName">${msg("firstName")}</label>
+                <label class="label" for="firstName">First Name *</label>
                 <div class="control is-expanded">
                     <input type="text" id="firstName" class="input" name="firstName" value="${(register.formData.firstName!'')}" />
                 </div>
             </div>
 
             <div class="field">
-                <label class="label" for="lastName">${msg("lastName")}</label>
+                <label class="label" for="lastName">Last Name *</label>
                 <div class="control is-expanded">
                     <input type="text" id="lastName" class="input" name="lastName" value="${(register.formData.lastName!'')}" />
                 </div>
             </div>
 
             <div class="field">
-                <label class="label" for="email">${msg("email")}</label>
+                <label class="label" for="email">${msg("email")} *</label>
                 <div class="control has-icons-left is-expanded">
                     <input type="text" id="email" class="input" name="email" value="${(register.formData.email!'')}" autocomplete="email" />
                     <span class="icon is-small is-left">
@@ -32,7 +32,7 @@
 
           <#if !realm.registrationEmailAsUsername>
             <div class="field">
-                <label class="label" for="username">${msg("username")}</label>
+                <label class="label" for="username">${msg("username")} *</label>
                 <div class="control has-icons-left is-expanded">
                     <input type="text" id="usernameR" class="input" name="username" value="${(register.formData.username!'')}" autocomplete="username" />
 		<i>Usernames must be at least 3 characters long, using lower case and  must consist of a-z, _, and 0-9 characters.</i>
@@ -45,7 +45,7 @@
 
             <#if passwordRequired>
             <div class="field">
-                <label class="label" for="password">${msg("password")}</label>
+                <label class="label" for="password">${msg("password")} *</label>
                 <div class="control has-icons-left is-expanded">
                     <input type="password" id="password" class="input" name="password" autocomplete="new-password"/>
                     <span class="icon is-small is-left">
@@ -55,7 +55,7 @@
             </div>
 
             <div class="field">
-                <label class="label" for="password-confirm">${msg("passwordConfirm")}</label>
+                <label class="label" for="password-confirm">Confirm Password *</label>
                 <div class="control has-icons-left is-expanded">
                     <input type="password" id="password-confirm" class="input" name="password-confirm" />
                     <span class="icon is-small is-left">
@@ -64,6 +64,76 @@
                 </div>
             </div>
             </#if>
+
+            <div class="field">
+                <label class="label" for="user.attributes.phoneNumber">Phone Number</label>
+                <div class="control has-icons-left is-expanded">
+                    <input type="tel" 
+                           id="user.attributes.phoneNumber" 
+                           class="input" 
+                           name="user.attributes.phoneNumber" 
+                           value="${(register.formData['user.attributes.phoneNumber']!'')}"
+                           placeholder="e.g., +1 (555) 123-4567"
+                           pattern="[\+\d\s\(\)-]{5,20}"
+                           title="Phone number should contain only +, (), spaces, and numbers. Length: 5-20 characters." />
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-phone"></i>
+                    </span>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label" for="user.attributes.countryRegion">Country</label>
+                <div class="control has-icons-left is-expanded">
+                    <input type="text" id="user.attributes.countryRegion" class="input" name="user.attributes.countryRegion" value="${(register.formData['user.attributes.countryRegion']!'')}" />
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-globe"></i>
+                    </span>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label" for="user.attributes.areaOfInterest">Area of Interest</label>
+                <div class="control has-icons-left is-expanded">
+                    <input type="text" id="user.attributes.areaOfInterest" class="input" name="user.attributes.areaOfInterest" value="${(register.formData['user.attributes.areaOfInterest']!'')}" />
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-lightbulb"></i>
+                    </span>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label" for="user.attributes.companyName">Company Name</label>
+                <div class="control has-icons-left is-expanded">
+                    <input type="text" id="user.attributes.companyName" class="input" name="user.attributes.companyName" value="${(register.formData['user.attributes.companyName']!'')}" />
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-building"></i>
+                    </span>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label" for="user.attributes.positionRole">Position/Role</label>
+                <div class="control has-icons-left is-expanded">
+                    <input type="text" id="user.attributes.positionRole" class="input" name="user.attributes.positionRole" value="${(register.formData['user.attributes.positionRole']!'')}" />
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-user-tie"></i>
+                    </span>
+                </div>
+            </div>  
+
+            <div class="field">
+                <div class="control">
+                    <#if register.formData['user.attributes.termsAgreement']?? && register.formData['user.attributes.termsAgreement'] == 'true'>
+                        <input class="is-checkradio" id="user.attributes.termsAgreement" name="user.attributes.termsAgreement" type="checkbox" value="true" checked required>
+                    <#else>
+                        <input class="is-checkradio" id="user.attributes.termsAgreement" name="user.attributes.termsAgreement" type="checkbox" value="true" required>
+                    </#if>
+                    <label for="user.attributes.termsAgreement">
+                        I agree to the <a id="myTerms"><i>Terms of Service</i></a> and the <a id="myPrivacy"><i>Privacy Policy</i></a> *
+                    </label>
+                </div>
+            </div>
 
             <#if recaptchaRequired??>
                 <div class="field">
@@ -82,8 +152,6 @@
             </div>
 
             <hr class="hr">
-
-			<p>By clicking on "${msg("doRegister")}", you are agreeing to the <a id="myTerms"><i>Terms of Service</i></a> and the <a id="myPrivacy"><i>Privacy Policy</i></a>.</p>
         </form>
 
 <!--  ===================== Terms of Service =================================================== -->
@@ -954,6 +1022,46 @@ style='font-size:10.0pt;font-family:"&amp;quot",serif;color:#3D464D'>. </span></
     privacyBackground.onclick = togglePrivacyModal();
     privacyClose.onclick = togglePrivacyModal();
     privacyGotIt.onclick = togglePrivacyModal();
+
+    // Form validation for terms agreement and phone number
+    const registrationForm = document.getElementById('kc-register-form');
+    const termsCheckbox = document.getElementById('user.attributes.termsAgreement');
+    const phoneInput = document.getElementById('user.attributes.phoneNumber');
+    
+    if (registrationForm && termsCheckbox) {
+        registrationForm.addEventListener('submit', function(e) {
+            let isValid = true;
+            
+            // Check terms agreement
+            if (!termsCheckbox.checked) {
+                e.preventDefault();
+                alert('You must agree to the Terms of Service and Privacy Policy to register.');
+                return false;
+            }
+            
+            // Check phone number format if provided
+            if (phoneInput && phoneInput.value.trim() !== '') {
+                const phoneValue = phoneInput.value.trim();
+                
+                // Check length (5-20 characters)
+                if (phoneValue.length < 5 || phoneValue.length > 20) {
+                    e.preventDefault();
+                    alert('Phone number must be between 5 and 20 characters long.');
+                    phoneInput.focus();
+                    return false;
+                }
+                
+                // Check allowed characters: +, (), spaces, and numbers only
+                const phonePattern = /^[\+\(\)\s\d]+$/;
+                if (!phonePattern.test(phoneValue)) {
+                    e.preventDefault();
+                    alert('Phone number can only contain +, (), spaces, and numbers.');
+                    phoneInput.focus();
+                    return false;
+                }
+            }
+        });
+    }
 </script>
 
 

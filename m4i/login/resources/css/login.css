@@ -3,6 +3,25 @@
     justify-content: space-between !important;
 }
 
+/* Fix input padding when using left icons to prevent text overlap */
+.control.has-icons-left .input {
+    padding-left: 2.5em;
+}
+
+.control.has-icons-left .textarea {
+    padding-left: 2.5em;
+}
+
+.control.has-icons-left .select select {
+    padding-left: 2.5em;
+}
+
+/* Ensure icons are properly positioned */
+.control.has-icons-left .icon.is-left {
+    left: 0;
+    pointer-events: none;
+}
+
 /* Define colors for each social provider */
 #social-google {
   color: #4285f4;
